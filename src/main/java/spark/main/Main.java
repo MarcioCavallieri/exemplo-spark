@@ -17,6 +17,6 @@ public class Main {
 		
         final var mouting = "Mouting " + MOUNT_POINT + "{0}";
         LOGGER.log(Level.INFO, mouting, "/jogos");
-        new JogoServico();
+        new JogoServico(MOUNT_POINT);
 	}
 }
