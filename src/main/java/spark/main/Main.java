@@ -13,8 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 		LOGGER.log(Level.INFO, "Listening on {0}", PORTA);
 		Spark.port(PORTA);
-		Spark.get("/", (req, resp) -> "Exemplo de API's com Spark");
-		
+				
         final var mouting = "Mouting " + MOUNT_POINT + "{0}";
         LOGGER.log(Level.INFO, mouting, "/jogos");
         new JogoServico(MOUNT_POINT);

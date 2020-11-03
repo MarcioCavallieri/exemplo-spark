@@ -10,6 +10,7 @@ public class JogoServico {
 	public JogoServico(String mountPoint) {
 		this.path = mountPoint + "/jogos";
 		
+		Spark.staticFileLocation("/assets");
 		Spark.get("/jogos", (req, resp) -> "Exemplo de API's com Spark");
 		Spark.get(this.path, repositorio::obterTodos);
 		Spark.get(this.path + "/:id", repositorio::obterPorId);

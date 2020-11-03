@@ -38,7 +38,7 @@ public class JogoRepositorio {
 	public String obterPorId(Request requisicao, Response resposta) {
 		resposta.type("application/json");
 		
-		Long id = Long.parseLong(requisicao.params("id"));
+		Long id = Long.valueOf(requisicao.params("id"));
 		final Jogo jogo = listaDeJogos.get(id);
 		
 		if (jogo == null) {
@@ -65,15 +65,16 @@ public class JogoRepositorio {
 	public String atualizar(Request requisicao, Response resposta) {
 		resposta.type("application/json");
 				
+		Long id = Long.valueOf(requisicao.params("id"));
 		Jogo jogo = new Gson().fromJson(requisicao.body(), Jogo.class);
-		Jogo jogoAtual = listaDeJogos.get(jogo.getId());
+		Jogo jogoAtual = listaDeJogos.get(id);
 		
 		if (jogoAtual != null) {
 			jogoAtual.setNome(jogo.getNome());
 			jogoAtual.setGenero(jogo.getGenero());
 			jogoAtual.setPlataforma(jogo.getPlataforma());
 			
-			resposta.status(204);
+			resposta.status(200);
 			return new Gson().toJson(jogoAtual);
 		}
 		
